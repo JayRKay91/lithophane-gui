@@ -1,0 +1,29 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+*.dll
+*.exe
+
+# Environment
+.env
+venv/
+env/
+
+# Distribution / Packaging
+build/
+dist/
+*.spec
+
+# Logs and local data
+*.log
+*.sqlite3
+
+# OS and editor
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+
+# Uploads
+static/uploads/

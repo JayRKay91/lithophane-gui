@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Image to Grayscale</title>
+</head>
+<body>
+  <h1>Upload an Image</h1>
+  <form method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" accept="image/*" required><br><br>
+
+    <label>Max Height (mm): <input type="number" step="0.1" name="max_height" value="5.0"></label><br>
+    <label>Pixel Scale (mm per pixel): <input type="number" step="0.01" name="pixel_scale" value="0.1"></label><br>
+    <label>Backing Thickness (mm): <input type="number" step="0.1" name="back_thickness" value="1.0"></label><br><br>
+
+    <input type="submit" value="Upload & Convert">
+  </form>
+
+  {% if grayscale_image %}
+    <h2>Grayscale Result:</h2>
+    <img src="{{ url_for('uploaded_file', filename=grayscale_image) }}" alt="Grayscale Image" width="300">
+    <p>
+      <a href="{{ url_for('uploaded_file', filename=grayscale_image) }}" download>Download Grayscale Image</a>
+      |
+      <a href="{{ url_for('generate_stl', filename=grayscale_image, 
+                          max_height=params.max_height, 
+                          pixel_scale=params.pixel_scale,
+                          back_thickness=params.back_thickness) }}">
+        Generate STL for 3D Printing
+      </a>
+    </p>
+  {% endif %}
+</body>
+</html>
